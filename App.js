@@ -1,55 +1,74 @@
 import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, {useState} from 'react';
 
+import Boton from './components/Boton';
+import Navbar from './components/Navbar';
+import {render} from 'react-native-web';
+
 export default function App() {
 
   const [lista, setLista] = useState([]);
   const [text, setText] = React.useState("Useless Text");
+  const [render, setRender] = useState(false);              //Esto solo sirve para que renderice cuando llamo a itemHecho
 
-  addItem = () => {
-      let newElement = {id: Math.random().toString(), value: text}
+  const addItem = () => {
+      let newElement = {id: Math.random().toString(), value: text, state: false}
       setLista(lista.concat([newElement]))
   }
 
-  const renderItem = ({ item }) => (
-    <View>
-      <Text style={styles.imag}>{item.value}</Text>
-    </View>
-  );
+  const eliminateItem = (idItem) => {
+    setLista(lista.filter((item) => item.id !== idItem))
+  }
+
+  const itemHecho = (item) => {
+    item.state = true
+    setRender(!render)
+};
 
   return (
     <View>
-      <View>
-          <TextInput
-              placeholder = "Item de la lista"
-              onChangeText = {setText} 
-              style = {styles.input}
-          />
-          <Button title="ADD" onPress={addItem}/>
-      </View>
+      <Navbar/>
+      <Boton addItem={addItem} setText={setText} />
       <FlatList
         data={lista}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
+        renderItem={(data) => (
+          <View style={styles.cuadricula}>
+          <Text
+            style={
+                data.item.state ? styles.itemHecho: styles.item
+            }
+          >
+            {data.item.value}
+          </Text>
+
+          <Button
+            onPress={() => eliminateItem(data.item.id)}
+            title="Eliminate"
+          />
+
+          <Button
+            onPress={() => itemHecho(data.item)}
+            title="Done"
+          />
+          </View>
+        )}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  imag: {
-    color: "white",
+  cuadricula: {
     margin: 5,
-    flex: 1,
-    backgroundColor: 'blue',
-    textAlign: "center",
-    height: "80%",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
-  input: {
-    marginTop: 50,
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+  itemHecho: {
+    color: "green",
+  },
+  item: {
+    color: "blue",
   },
 });

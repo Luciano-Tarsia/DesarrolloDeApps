@@ -1,34 +1,25 @@
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, {useState} from 'react';
 
-const Boton = () => {
-    const [lista, setLista] = useState([]);
-    const [text, setText] = React.useState("Useless Text");
-
-    addItem = () => {
-        let newElement = {id: Math.random().toString(), value: text}
-        setLista(lista.concat([newElement]))
-        listaPrincipal.lp = lista
-
-    }
+const Boton = (props) => {
 
     return (
         <View>
             <TextInput
                 placeholder = "Item de la lista"
-                onChangeText = {setText} 
+                onChangeText = {props.setText} 
                 style = {styles.input}
             />
-            <Button title="ADD" onPress={addItem}/>
+            <Button title="ADD" onPress={props.addItem}/>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     input: {
-        marginTop: 50,
         height: 40,
         margin: 12,
+        marginTop: 10,
         borderWidth: 1,
         padding: 10,
     },
