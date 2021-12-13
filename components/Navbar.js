@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const Navbar = () => {
     return (
         <View style={styles.navbar}>
-            <Text style={{fontSize:15}}>Bienvenidx</Text>
+            <Text style={{fontSize:15, fontFamily:"openSans"}}>Bienvenidx</Text>
         </View>
     );
 };

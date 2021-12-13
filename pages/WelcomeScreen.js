@@ -6,7 +6,7 @@ const WelcomeScreen = props => {
     return(
     
     <View style={styles.bienvenida}>
-        <Text style={{textAlign: 'center', marginBottom:10}}>Bienvenidx a la aplicación</Text>
+        <Text style={{textAlign: 'center', marginBottom:10, fontFamily:"openSans"}}>Bienvenidx a la aplicación</Text>
         <Button title="Avanzar" onPress={props.setAvanzar}/>
     </View>
     )
