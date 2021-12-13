@@ -1,74 +1,32 @@
-import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, {useState} from 'react';
+import { StyleSheet, View } from "react-native";
 
-import Boton from './components/Boton';
-import Navbar from './components/Navbar';
-import {render} from 'react-native-web';
+import AppLoading from 'expo-app-loading';
+import PrincipalScreen from './pages/PrincipalScreen';
+import WelcomeScreen from './pages/WelcomeScreen';
+import { useFonts } from 'expo-font';
 
 export default function App() {
+  const [loaded] = useFonts({
+    openSans: require('./assets/fonts/OpenSansCondensed-Bold.ttf'),
+  })
 
-  const [lista, setLista] = useState([]);
-  const [text, setText] = React.useState("Useless Text");
-  const [render, setRender] = useState(false);              //Esto solo sirve para que renderice cuando llamo a itemHecho
+  if (!loaded) return <AppLoading />
 
-  const addItem = () => {
-      let newElement = {id: Math.random().toString(), value: text, state: false}
-      setLista(lista.concat([newElement]))
-  }
+  const [avanzar, setAvanzar] = useState(false);
 
-  const eliminateItem = (idItem) => {
-    setLista(lista.filter((item) => item.id !== idItem))
-  }
-
-  const itemHecho = (item) => {
-    item.state = true
-    setRender(!render)
-};
+  let content = null
+  avanzar?
+    content = <PrincipalScreen/>
+    : content = <WelcomeScreen setAvanzar={setAvanzar} />
 
   return (
     <View>
-      <Navbar/>
-      <Boton addItem={addItem} setText={setText} />
-      <FlatList
-        data={lista}
-        renderItem={(data) => (
-          <View style={styles.cuadricula}>
-          <Text
-            style={
-                data.item.state ? styles.itemHecho: styles.item
-            }
-          >
-            {data.item.value}
-          </Text>
-
-          <Button
-            onPress={() => eliminateItem(data.item.id)}
-            title="Eliminate"
-          />
-
-          <Button
-            onPress={() => itemHecho(data.item)}
-            title="Done"
-          />
-          </View>
-        )}
-      />
+      {content}
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  cuadricula: {
-    margin: 5,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  itemHecho: {
-    color: "green",
-  },
-  item: {
-    color: "blue",
-  },
-});
+//const styles = StyleSheet.create({
+//
+//});

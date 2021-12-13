@@ -1,5 +1,6 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import React, {useState} from 'react';
+import { Button, StyleSheet, TextInput, View } from 'react-native';
+
+import React from 'react';
 
 const Boton = (props) => {
 
