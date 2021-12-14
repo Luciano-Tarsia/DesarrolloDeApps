@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 
 import AppLoading from 'expo-app-loading';
 import PrincipalScreen from './pages/PrincipalScreen';
+import ShopNavigator from './navigation/ShopNavigator';
 import WelcomeScreen from './pages/WelcomeScreen';
 import { useFonts } from 'expo-font';
 

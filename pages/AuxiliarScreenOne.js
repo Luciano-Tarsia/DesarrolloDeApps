@@ -1,13 +1,13 @@
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 
-import Navbar from '../components/Navbar';
 import React from "react";
 
-const WelcomeScreen = props => {
+const AuxiliarScreenOne = props => {
     return(
     
     <View style={styles.bienvenida}>
-        <Text style={{textAlign: 'center', marginBottom:10, fontFamily:"openSans"}}>Bienvenidx a la aplicación</Text>
+        <Text style={{textAlign: 'center', marginBottom:10, fontFamily:"openSans"}}>Pantalla uno</Text>
+        <Image source={require('../assets/images/Logo.png')}/>
         <Button title="Avanzar" onPress={props.setAvanzar}/>
     </View>
     )
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default WelcomeScreen
+export default AuxiliarScreenOne

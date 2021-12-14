@@ -26,32 +26,32 @@ const PrincipalScreen = props => {
 
     return(
         <View>
-        <Navbar/>
-        <Boton addItem={addItem} setText={setText} />
-        <FlatList
-            data={lista}
-            renderItem={(data) => (
-            <View style={styles.cuadricula}>
-                <Text
-                    style={
-                        data.item.state ? styles.itemHecho: styles.item
-                    }
-                >
-                    {data.item.value}
-                </Text>
+            <Navbar/>
+            <Boton addItem={addItem} setText={setText} />
+            <FlatList
+                data={lista}
+                renderItem={(data) => (
+                <View style={styles.cuadricula}>
+                    <Text
+                        style={
+                            data.item.state ? styles.itemHecho: styles.item
+                        }
+                    >
+                        {data.item.value}
+                    </Text>
 
-                <Button
-                    onPress={() => eliminateItem(data.item.id)}
-                    title="Eliminate"
-                />
+                    <Button
+                        onPress={() => eliminateItem(data.item.id)}
+                        title="Eliminate"
+                    />
 
-                <Button
-                    onPress={() => doneItem(data.item)}
-                    title="Done"
-                />
-            </View>
-            )}
-        />
+                    <Button
+                        onPress={() => doneItem(data.item)}
+                        title="Done"
+                    />
+                </View>
+                )}
+            />
         </View>
     )
 }

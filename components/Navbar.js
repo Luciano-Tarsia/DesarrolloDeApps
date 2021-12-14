@@ -1,10 +1,18 @@
+import { Button, StyleSheet, Text, View } from 'react-native';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 
 const Navbar = () => {
+
+    const navigation = useNavigation()
+
     return (
         <View style={styles.navbar}>
             <Text style={{fontSize:15, fontFamily:"openSans"}}>Bienvenidx</Text>
+            <Button title='Ir a AuxUno' onPress={()=>{
+                navigation.navigate('aux1')
+            }}/>
         </View>
     );
 };
