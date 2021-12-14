@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 
 import Boton from '../components/Boton';
 import Navbar from '../components/Navbar';
+import ShopNavigator from '../navigation/Navigator';
 
 const PrincipalScreen = props => {
 
@@ -26,7 +27,7 @@ const PrincipalScreen = props => {
 
     return(
         <View>
-            <Navbar/>
+            <Navbar styles={styles.navbar}/>
             <Boton addItem={addItem} setText={setText} />
             <FlatList
                 data={lista}
@@ -69,6 +70,14 @@ const styles = StyleSheet.create({
     },
         item: {
         color: "blue",
+    },
+    navbar: {
+        marginTop: 5,
+        marginBottom: 0,
+        height: "20%",
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
     },
 })
 

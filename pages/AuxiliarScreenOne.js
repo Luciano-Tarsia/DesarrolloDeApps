@@ -1,30 +1,43 @@
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 
+import Navbar from "../components/Navbar";
 import React from "react";
 
 const AuxiliarScreenOne = props => {
     return(
-    
-    <View style={styles.bienvenida}>
-        <Text style={{textAlign: 'center', marginBottom:10, fontFamily:"openSans"}}>Pantalla uno</Text>
-        <Image source={require('../assets/images/Logo.png')}/>
-        <Button title="Avanzar" onPress={props.setAvanzar}/>
-    </View>
+        <View style={styles.container}>
+            <Navbar styles={styles.navbar}/>
+            <Text   style={styles.text}>Pantalla uno</Text>
+            <Image  style={styles.image} source={require('../assets/images/Logo.png')} />
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
-    bienvenida: {
+    container:  {
+        marginTop: 0,
         flex: 1,
-        position: 'absolute',
-        alignSelf: 'center',
-        alignContent: "center",
-        marginTop: 320,
-        borderColor: "black",
-        elevation: 25,
-        borderRadius: 25,
-        padding: 15,
-    }
+    },
+    image:      {
+        width: "50%",
+        height: "20%",
+        resizeMode: 'contain',
+        alignSelf: "center",
+        margin: 0,
+    },
+    text:       {
+        textAlign: 'center',
+        fontFamily:"openSans",
+        margin: 5,
+    },
+    navbar:     {
+        marginTop: 5,
+        marginBottom: 0,
+        height: "10%",
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    },
 })
 
 export default AuxiliarScreenOne

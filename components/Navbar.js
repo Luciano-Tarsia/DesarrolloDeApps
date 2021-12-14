@@ -1,33 +1,25 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
-import React, {useState} from 'react';
+import { Button, View } from 'react-native';
 
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-const Navbar = () => {
+const Navbar = (props) => {
 
-    const navigation = useNavigation()
+    const navigation = useNavigation(); 
 
     return (
-        <View style={styles.navbar}>
-            <Text style={{fontSize:15, fontFamily:"openSans"}}>Bienvenidx</Text>
-            <Button title='Ir a AuxUno' onPress={()=>{
-                navigation.navigate('aux1')
+        <View style={props.styles}>
+            <Button title='Home' onPress={()=>{
+                navigation.navigate('Home')
+            }}/>
+            <Button title='Ir a Aux1' onPress={()=>{
+                navigation.navigate('Aux1')
+            }}/>
+            <Button title='Ir a Aux2' onPress={()=>{
+                navigation.navigate('Aux2')
             }}/>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    navbar: {
-        marginTop: 40,
-        marginBottom: 0,
-        borderWidth: 1,
-        height: 30,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'lightblue',
-    },
-  });
 
 export default Navbar;
