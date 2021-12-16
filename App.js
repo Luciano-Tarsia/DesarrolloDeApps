@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
-import { StyleSheet, View } from "react-native";
 
 import AppLoading from 'expo-app-loading';
-import Navigator from './navigation/Navigator';
-import PrincipalScreen from './pages/PrincipalScreen';
-import WelcomeScreen from './pages/WelcomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from './navigation/TabNavigator';
 import { useFonts } from 'expo-font';
 
 export default function App() {
@@ -17,7 +15,9 @@ export default function App() {
   if (!loaded) return <AppLoading />
 
   return (
-    <Navigator/>
+    <NavigationContainer>
+      <TabNavigator/>
+    </NavigationContainer>
   )
 }
 

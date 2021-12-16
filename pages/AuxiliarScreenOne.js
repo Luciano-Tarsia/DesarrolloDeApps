@@ -1,12 +1,10 @@
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 
-import Navbar from "../components/Navbar";
 import React from "react";
 
 const AuxiliarScreenOne = props => {
     return(
         <View style={styles.container}>
-            <Navbar styles={styles.navbar}/>
             <Text   style={styles.text}>Pantalla uno</Text>
             <Image  style={styles.image} source={require('../assets/images/Logo.png')} />
         </View>
@@ -24,6 +22,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         alignSelf: "center",
         margin: 0,
+        borderRadius: 15,
     },
     text:       {
         textAlign: 'center',

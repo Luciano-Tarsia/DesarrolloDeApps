@@ -1,14 +1,14 @@
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 
-import Navbar from "../components/Navbar";
+import Boton from "../components/Boton";
 import React from "react";
 
-const AuxiliarScreenTwo = props => {
+//<Boton addItem={addItem} setText={setText} />
+
+const AddScreen = props => {
     return(
         <View style={styles.container}>
-            <Navbar styles={styles.navbar}/>
-            <Text   style={styles.text}>Pantalla dos</Text>
-            <Image  style={styles.image} source={require('../assets/images/Logo.png')} />
+            <Text>Hola</Text>
         </View>
     )
 }
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default AuxiliarScreenTwo
+export default AddScreen

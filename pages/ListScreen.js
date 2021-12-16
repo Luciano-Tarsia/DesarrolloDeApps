@@ -1,11 +1,12 @@
-import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
+import { Button, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import React, {useState} from 'react';
 
 import Boton from '../components/Boton';
-import Navbar from '../components/Navbar';
-import ShopNavigator from '../navigation/Navigator';
+import { useNavigation } from '@react-navigation/native';
 
-const PrincipalScreen = props => {
+const ListScreen = props => {
+
+    const navigation = useNavigation(); 
 
     const [lista, setLista] = useState([]);
     const [text, setText] = React.useState("Useless Text");
@@ -26,9 +27,21 @@ const PrincipalScreen = props => {
     }
 
     return(
-        <View>
-            <Navbar styles={styles.navbar}/>
-            <Boton addItem={addItem} setText={setText} />
+        <View style={
+            {
+                flex: 1,
+                alignItems: 'center',
+            }
+        }>
+            <View>
+                <Pressable 
+                    onPress={()=>{navigation.navigate('Add')}}
+                    style={styles.boton}
+                >
+                    <Text style={{color:"white"}}>AGREGAR IMAGEN</Text>
+                </Pressable>
+            </View>
+
             <FlatList
                 data={lista}
                 renderItem={(data) => (
@@ -79,6 +92,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
     },
+    boton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: "blue",
+        margin: 10,
+    },
 })
 
-export default PrincipalScreen
+export default ListScreen
