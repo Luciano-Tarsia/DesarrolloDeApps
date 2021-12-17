@@ -1,30 +1,16 @@
 import { Button, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import React, {useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import Boton from '../components/Boton';
+import { eliminateFromList } from "../store/actions/action";
 import { useNavigation } from '@react-navigation/native';
 
 const ListScreen = props => {
 
     const navigation = useNavigation(); 
 
-    const [lista, setLista] = useState([]);
-    const [text, setText] = React.useState("Useless Text");
-    const [render, setRender] = useState(false);              //Esto solo sirve para que renderice cuando llamo a itemHecho
-
-    const addItem = () => {
-        let newElement = {id: Math.random().toString(), value: text, state: false}
-        setLista(lista.concat([newElement]))
-    }
-  
-    const eliminateItem = (idItem) => {
-        setLista(lista.filter((item) => item.id !== idItem))
-    }
-  
-    const doneItem = (item) => {
-        item.state = true
-        setRender(!render)
-    }
+    const dispatch = useDispatch()
+    const lista = useSelector(state => state.list.list)
 
     return(
         <View style={
@@ -38,7 +24,7 @@ const ListScreen = props => {
                     onPress={()=>{navigation.navigate('Add')}}
                     style={styles.boton}
                 >
-                    <Text style={{color:"white"}}>AGREGAR IMAGEN</Text>
+                    <Text style={{color:"white", fontFamily: "openSans",}}>AGREGAR IMAGEN</Text>
                 </Pressable>
             </View>
 
@@ -48,21 +34,18 @@ const ListScreen = props => {
                 <View style={styles.cuadricula}>
                     <Text
                         style={
-                            data.item.state ? styles.itemHecho: styles.item
+                            styles.item
                         }
                     >
                         {data.item.value}
                     </Text>
-
-                    <Button
-                        onPress={() => eliminateItem(data.item.id)}
-                        title="Eliminate"
-                    />
-
-                    <Button
-                        onPress={() => doneItem(data.item)}
-                        title="Done"
-                    />
+                    <Pressable 
+                        onPress={() => dispatch(eliminateFromList(data.item.id))}
+                        //onPress={() => console.log(data.item.id)}
+                        style={styles.boton}
+                    >
+                        <Text style={{color:"white", fontFamily: "openSans",}}>ELIMINAR</Text>
+                    </Pressable>
                 </View>
                 )}
             />

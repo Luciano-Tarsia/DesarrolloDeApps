@@ -1,14 +1,16 @@
 import { Button, Image, StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { connect, useDispatch, useSelector } from 'react-redux';
 
-import Boton from "../components/Boton";
-import React from "react";
-
-//<Boton addItem={addItem} setText={setText} />
+import { addToList } from "../store/actions/action";
 
 const AddScreen = props => {
+    const dispatch = useDispatch()
+    const lista = useSelector(state => state.list.list)
+
     return(
         <View style={styles.container}>
-            <Text>Hola</Text>
+            <Button title="Agrego" onPress={() => dispatch(addToList({id: Math.random().toString(), value: "Forro", cat: 1}))} />
         </View>
     )
 }
@@ -40,4 +42,5 @@ const styles = StyleSheet.create({
     },
 })
 
-export default AddScreen
+export default connect()(AddScreen)
+//export default AddScreen

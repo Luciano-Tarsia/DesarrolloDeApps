@@ -5,7 +5,7 @@ import React from "react";
 const AuxiliarScreenOne = props => {
     return(
         <View style={styles.container}>
-            <Text   style={styles.text}>Pantalla uno</Text>
+            <Text   style={styles.text}>Aplicación creada por Luciano Tarsia en Diciembre de 2021.</Text>
             <Image  style={styles.image} source={require('../assets/images/Logo.png')} />
         </View>
     )
@@ -13,12 +13,15 @@ const AuxiliarScreenOne = props => {
 
 const styles = StyleSheet.create({
     container:  {
-        marginTop: 0,
         flex: 1,
+        flexDirection: "column",
+        justifyContent: "center",
+        alignContent: "center",
+        maxHeight: "80%",
     },
     image:      {
         width: "50%",
-        height: "20%",
+        height: "30%",
         resizeMode: 'contain',
         alignSelf: "center",
         margin: 0,
@@ -27,7 +30,8 @@ const styles = StyleSheet.create({
     text:       {
         textAlign: 'center',
         fontFamily:"openSans",
-        margin: 5,
+        width: "50%",
+        alignSelf: "center",
     },
     navbar:     {
         marginTop: 5,

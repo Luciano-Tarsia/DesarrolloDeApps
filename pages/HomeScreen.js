@@ -2,6 +2,7 @@ import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from "react-n
 
 import React from "react";
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 const HomeScreen = () => {
 
