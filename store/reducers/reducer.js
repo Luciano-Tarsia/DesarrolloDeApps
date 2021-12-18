@@ -12,7 +12,7 @@ const listReducer = (state = initialState, action) => {
             }
         case ELIMINATE_FROM_LIST:
             return {
-                list: state.list.filter(item => item.id !== state.id)
+                list: state.list.filter(item => item.id !== action.id)
             }
         default:
             return state

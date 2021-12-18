@@ -12,6 +12,7 @@ const ListScreen = props => {
     const dispatch = useDispatch()
     const lista = useSelector(state => state.list.list)
 
+    
     return(
         <View style={
             {
