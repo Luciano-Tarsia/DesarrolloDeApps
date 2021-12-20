@@ -1,18 +1,26 @@
-import { ADD_TO_LIST, ELIMINATE_FROM_LIST } from "../actions/action"
+import { ADD_TO_LIST, ELIMINATE_FROM_LIST, NAVIGATION } from "../actions/action"
 
 const initialState = {
-    list: [{id: Math.random().toString(), value: "Hola Mundo", cat: 1}],
+    list: [],
+    navigation: 1,
 }
 
 const listReducer = (state = initialState, action) => {
     switch(action.type){
         case ADD_TO_LIST:
             return {
-                list: [...state.list, action.item]
+                ...state,
+                list: [...state.list, action.item],
             }
         case ELIMINATE_FROM_LIST:
             return {
+                ...state,
                 list: state.list.filter(item => item.id !== action.id)
+            }
+        case NAVIGATION:
+            return {
+                ...state,
+                navigation: action.categoria
             }
         default:
             return state

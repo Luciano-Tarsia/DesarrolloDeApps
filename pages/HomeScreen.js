@@ -12,11 +12,11 @@ const HomeScreen = () => {
         <View style={styles.general}>
             <View style={styles.fila}>
                 <TouchableOpacity style={styles.opcion} onPress={()=>{
-                    navigation.navigate('List')}}>
+                        navigation.navigate('List')}}>
                     <Text style={styles.text}>Casa</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.opcion} onPress={()=>{
-                    navigation.navigate('List')}}>
+                        navigation.navigate('List')}}>
                     <Text style={styles.text}>Escuela</Text>
                 </TouchableOpacity>
             </View>
@@ -24,11 +24,12 @@ const HomeScreen = () => {
             <View style={styles.fila}>
                 <TouchableOpacity 
                     style={styles.opcion} 
-                    onPress={()=>{navigation.navigate('List')}}>
+                    onPress={()=>{
+                        navigation.navigate('List')}}>
                     <Text style={styles.text}>Nonna</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.opcion} onPress={()=>{
-                    navigation.navigate('List')}}>
+                        navigation.navigate('List')}}>
                     <Text style={styles.text}>Otro</Text>
                 </TouchableOpacity>
             </View>

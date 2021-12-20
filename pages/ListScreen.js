@@ -2,16 +2,15 @@ import { Button, FlatList, Pressable, StyleSheet, Text, View } from 'react-nativ
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { eliminateFromList } from "../store/actions/action";
 import { useNavigation } from '@react-navigation/native';
 
 const ListScreen = props => {
 
     const navigation = useNavigation(); 
-
     const dispatch = useDispatch()
     const lista = useSelector(state => state.list.list)
-
     
     return(
         <View style={
@@ -30,24 +29,25 @@ const ListScreen = props => {
             </View>
 
             <FlatList
+                contentContainerStyle = {styles.cuadricula}
                 data={lista}
                 renderItem={(data) => (
-                <View style={styles.cuadricula}>
-                    <Text
-                        style={
-                            styles.item
-                        }
-                    >
-                        {data.item.value}
-                    </Text>
-                    <Pressable 
-                        onPress={() => dispatch(eliminateFromList(data.item.id))}
-                        //onPress={() => console.log(data.item.id)}
-                        style={styles.boton}
-                    >
-                        <Text style={{color:"white", fontFamily: "openSans",}}>ELIMINAR</Text>
-                    </Pressable>
-                </View>
+                    <View style={styles.item}>
+                        <Text
+                            style={
+                                {color: "blue", marginTop:10, marginLeft:10, marginRight:10, textAlign: "center"}
+                            }
+                        >
+                            {data.item.value}
+                        </Text>
+                        <Pressable 
+                            onPress={() => dispatch(eliminateFromList(data.item.id))}
+                            //onPress={() => console.log(data.item.id)}
+                            style={styles.boton}
+                        >
+                            <Text style={{color:"white", fontFamily: "openSans"}}>ELIMINAR</Text>
+                        </Pressable>
+                    </View>
                 )}
             />
         </View>
@@ -56,25 +56,20 @@ const ListScreen = props => {
 
 const styles = StyleSheet.create({
     cuadricula: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        flexWrap: "wrap"
+    },
+    item: {
         margin: 5,
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-around',
         alignItems: 'center',
-    },
-    itemHecho: {
-        color: "green",
-    },
-        item: {
-        color: "blue",
-    },
-    navbar: {
-        marginTop: 5,
-        marginBottom: 0,
-        height: "20%",
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around',
+        backgroundColor: "lightblue",
+        borderRadius: 15,
+        elevation: 5,
     },
     boton: {
         alignItems: 'center',

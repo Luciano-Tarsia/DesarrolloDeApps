@@ -1,16 +1,32 @@
-import { Button, Image, StyleSheet, Text, View } from "react-native";
-import React, { useEffect } from "react";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
 import { connect, useDispatch, useSelector } from 'react-redux';
 
 import { addToList } from "../store/actions/action";
 
 const AddScreen = props => {
+    const [text, setText] = React.useState("Useless Text");
+
     const dispatch = useDispatch()
-    const lista = useSelector(state => state.list.list)
+
+    const addItem = () => {
+        let newElement = {id: Math.random().toString(), value: text, cat: 1}
+        dispatch(addToList(newElement))
+    }
 
     return(
         <View style={styles.container}>
-            <Button title="Agrego" onPress={() => dispatch(addToList({id: Math.random().toString(), value: "Forro", cat: 1}))} />
+            <TextInput
+                placeholder = "Item de la lista"
+                onChangeText = {setText} 
+                style = {styles.input}
+            />
+            <Pressable 
+                    onPress={() => addItem()}
+                    style={styles.boton}
+                >
+                    <Text style={{color:"white", fontFamily: "openSans",}}>AGREGAR</Text>
+            </Pressable>
         </View>
     )
 }
@@ -20,27 +36,25 @@ const styles = StyleSheet.create({
         marginTop: 0,
         flex: 1,
     },
-    image:      {
-        width: "50%",
-        height: "20%",
-        resizeMode: 'contain',
-        alignSelf: "center",
-        margin: 0,
-    },
-    text:       {
-        textAlign: 'center',
-        fontFamily:"openSans",
-        margin: 5,
-    },
-    navbar:     {
-        marginTop: 5,
-        marginBottom: 0,
-        height: "10%",
-        flexDirection: 'row',
+
+    boton: {
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: "blue",
+        marginRight: 10,
+        marginLeft: 10,
+    },
+    input: {
+        height: 40,
+        margin: 11,
+        marginTop: 10,
+        borderWidth: 1,
+        padding: 10,
     },
 })
 
 export default connect()(AddScreen)
-//export default AddScreen
