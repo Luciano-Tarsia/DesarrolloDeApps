@@ -1,22 +1,32 @@
 import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useDispatch, useSelector } from 'react-redux';
 
 import React from "react";
+import { navigationRedux } from "../store/actions/action";
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
 
 const HomeScreen = () => {
 
-    const navigation = useNavigation(); 
+    const navigation = useNavigation();
+    const dispatch = useDispatch()
 
     return(
         <View style={styles.general}>
             <View style={styles.fila}>
-                <TouchableOpacity style={styles.opcion} onPress={()=>{
-                        navigation.navigate('List')}}>
+                <TouchableOpacity style={styles.opcion} 
+                onPress={()=>{
+                    dispatch(navigationRedux(1))
+                    navigation.navigate('List')
+                    //console.log(useSelector(state => state.list.navigation))
+                }}>
                     <Text style={styles.text}>Casa</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.opcion} onPress={()=>{
-                        navigation.navigate('List')}}>
+                <TouchableOpacity 
+                    style={styles.opcion} 
+                    onPress={()=>{
+                        dispatch(navigationRedux(2))
+                        navigation.navigate('List')
+                    }}>
                     <Text style={styles.text}>Escuela</Text>
                 </TouchableOpacity>
             </View>
@@ -25,11 +35,17 @@ const HomeScreen = () => {
                 <TouchableOpacity 
                     style={styles.opcion} 
                     onPress={()=>{
-                        navigation.navigate('List')}}>
+                        dispatch(navigationRedux(3))
+                        navigation.navigate('List')
+                    }}>
                     <Text style={styles.text}>Nonna</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.opcion} onPress={()=>{
-                        navigation.navigate('List')}}>
+                <TouchableOpacity 
+                    style={styles.opcion} 
+                    onPress={()=>{
+                        dispatch(navigationRedux(4))
+                        navigation.navigate('List')
+                    }}>
                     <Text style={styles.text}>Otro</Text>
                 </TouchableOpacity>
             </View>

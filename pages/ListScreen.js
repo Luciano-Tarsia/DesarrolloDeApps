@@ -10,7 +10,9 @@ const ListScreen = props => {
 
     const navigation = useNavigation(); 
     const dispatch = useDispatch()
-    const lista = useSelector(state => state.list.list)
+
+    const categoria = useSelector(state => state.list.navigation)
+    const lista = useSelector(state => state.list.list).filter(item => item.cat === categoria)
     
     return(
         <View style={
@@ -21,7 +23,8 @@ const ListScreen = props => {
         }>
             <View>
                 <Pressable 
-                    onPress={()=>{navigation.navigate('Add')}}
+                    onPress={()=>{
+                        navigation.navigate('Add')}}
                     style={styles.boton}
                 >
                     <Text style={{color:"white", fontFamily: "openSans",}}>AGREGAR IMAGEN</Text>
