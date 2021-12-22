@@ -14,7 +14,7 @@ export const eliminateFromList = (id) => ({
     id: id
 })
 
-export const navigationRedux = (categoria) => ({
+export const navigation = (categoria) => ({
     type: NAVIGATION,
     categoria: categoria
 })

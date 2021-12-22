@@ -40,7 +40,6 @@ const AddScreen = props => {
             
             <TouchableOpacity style={styles.botonCerrado}
                 onPress={()=>{
-                    console.log("Hola")
                     setAgregado(false)
                 }}>
                 <Text style={{margin:5}}>{agregado? "Agregado!" : ""}</Text>
