@@ -1,8 +1,8 @@
-import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useDispatch, useSelector } from 'react-redux';
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import React from "react";
 import { navigationRedux } from "../store/actions/action";
+import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {

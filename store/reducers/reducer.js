@@ -1,7 +1,8 @@
-import { ADD_TO_LIST, ELIMINATE_FROM_LIST, NAVIGATION } from "../actions/action"
+import { ADD_TO_LIST, CONFIRM_NOT_REMOVE_ITEM, CONFIRM_REMOVE_ITEM, ELIMINATE_FROM_LIST, NAVIGATION } from "../actions/action"
 
 const initialState = {
     list: [],
+    selected: null,
     navigation: 1,
 }
 
@@ -15,7 +16,18 @@ const listReducer = (state = initialState, action) => {
         case ELIMINATE_FROM_LIST:
             return {
                 ...state,
-                list: state.list.filter(item => item.id !== action.id)
+                selected: state.list.find(item => item.id === action.id),
+            }
+        case CONFIRM_REMOVE_ITEM:
+            return{
+                ...state,
+                selected: null,
+                list: state.list.filter(item => item.id !== state.selected.id),
+            }
+        case CONFIRM_NOT_REMOVE_ITEM:
+            return{
+                ...state,
+                selected: null,
             }
         case NAVIGATION:
             return {

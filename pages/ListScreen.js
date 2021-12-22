@@ -1,8 +1,8 @@
-import { Button, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
-import React, {useState} from 'react';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import DeleteModal from '../components/Modal';
+import React from 'react';
 import { eliminateFromList } from "../store/actions/action";
 import { useNavigation } from '@react-navigation/native';
 
@@ -21,6 +21,7 @@ const ListScreen = props => {
                 alignItems: 'center',
             }
         }>
+            <DeleteModal/>
             <View>
                 <Pressable 
                     onPress={()=>{
@@ -45,7 +46,6 @@ const ListScreen = props => {
                         </Text>
                         <Pressable 
                             onPress={() => dispatch(eliminateFromList(data.item.id))}
-                            //onPress={() => console.log(data.item.id)}
                             style={styles.boton}
                         >
                             <Text style={{color:"white", fontFamily: "openSans"}}>ELIMINAR</Text>
