@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { KeyboardAvoidingView, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { connect, useDispatch, useSelector } from 'react-redux';
 
@@ -22,30 +22,32 @@ const AddScreen = props => {
     }
 
     return(
-        <View style={styles.container}>
-            <TextInput
-                placeholder = "Item de la lista"
-                onChangeText = {setText} 
-                style = {styles.input}
-            />
-            <Pressable 
-                    onPress={() =>{
-                        addItem()
-                        setAgregado(true)
-                    }}
-                    style={styles.boton}
-                >
-                    <Text style={{color:"white", fontFamily: "openSans",}}>AGREGAR</Text>
-            </Pressable>
-            
-            <TouchableOpacity style={styles.botonCerrado}
-                onPress={()=>{
-                    setAgregado(false)
-                }}>
-                <Text style={{margin:5}}>{agregado? "Agregado!" : ""}</Text>
-                <Ionicons style={{margin:5}} name={agregado? 'checkmark-circle' : ""} size={24} color='black'/> 
-            </TouchableOpacity>
-        </View>
+        <KeyboardAvoidingView style={{flex:1}} behavior="height" keyboardVerticalOffset={30}>
+            <View style={styles.container}>
+                <TextInput
+                    placeholder = "Item de la lista"
+                    onChangeText = {setText} 
+                    style = {styles.input}
+                />
+                <Pressable 
+                        onPress={() =>{
+                            addItem()
+                            setAgregado(true)
+                        }}
+                        style={styles.boton}
+                    >
+                        <Text style={{color:"white", fontFamily: "openSans",}}>AGREGAR</Text>
+                </Pressable>
+                
+                <TouchableOpacity style={styles.botonCerrado}
+                    onPress={()=>{
+                        setAgregado(false)
+                    }}>
+                    <Text style={{margin:5}}>{agregado? "Agregado!" : ""}</Text>
+                    <Ionicons style={{margin:5}} name={agregado? 'checkmark-circle' : ""} size={24} color='black'/> 
+                </TouchableOpacity>
+            </View>
+        </KeyboardAvoidingView>
     )
 }
 
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 12,
         paddingHorizontal: 30,
-        borderRadius: 4,
+        borderRadius: 5,
         elevation: 3,
         backgroundColor: "blue",
         marginRight: 10,
@@ -75,10 +77,9 @@ const styles = StyleSheet.create({
     botonCerrado:{
         flex: 1,
         flexDirection: "row",
-        marginTop: 8,
         marginLeft: 10,
         marginRight: 10,
-        maxHeight: "6%",
+        maxHeight: "10%",
         alignItems: "center",
         justifyContent:"center",
     }

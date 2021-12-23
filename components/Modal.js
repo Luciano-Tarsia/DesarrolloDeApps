@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     },
     shadow: {
         elevation: 3,
-        borderRadius: 15
+        borderRadius: 5
     },
     botones: {
         flex: 1,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     boton: {
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 4,
+        borderRadius: 5,
         backgroundColor: "blue",
         width: "45%",
         height: "70%",

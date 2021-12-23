@@ -33,8 +33,9 @@ const ListScreen = props => {
             </View>
 
             <FlatList
-                contentContainerStyle = {styles.cuadricula}
+                columnWrapperStyle={{flex: 1, justifyContent: "space-around", margin:20}}
                 data={lista}
+                numColumns={2}
                 renderItem={(data) => (
                     <View style={styles.item}>
                         <Text
@@ -46,7 +47,7 @@ const ListScreen = props => {
                         </Text>
                         <Pressable 
                             onPress={() => dispatch(eliminateFromList(data.item.id))}
-                            style={styles.boton}
+                            style={styles.botonEliminar}
                         >
                             <Text style={{color:"white", fontFamily: "openSans"}}>ELIMINAR</Text>
                         </Pressable>
@@ -58,20 +59,14 @@ const ListScreen = props => {
 }
 
 const styles = StyleSheet.create({
-    cuadricula: {
-        flexDirection: "row",
-        justifyContent: "space-evenly",
-        alignItems: "center",
-        flexWrap: "wrap"
-    },
     item: {
-        margin: 5,
-        display: 'flex',
+        marginLeft: 25,
+        marginRight: 25,
         flexDirection: 'column',
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: "lightblue",
-        borderRadius: 15,
+        borderRadius: 5,
         elevation: 5,
     },
     boton: {
@@ -79,7 +74,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 12,
         paddingHorizontal: 30,
-        borderRadius: 4,
+        borderRadius: 5,
+        elevation: 3,
+        backgroundColor: "blue",
+        margin: 10,
+    },
+    botonEliminar: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 7,
+        paddingHorizontal: 20,
+        borderRadius: 5,
         elevation: 3,
         backgroundColor: "blue",
         margin: 10,

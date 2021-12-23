@@ -17,7 +17,6 @@ const HomeScreen = () => {
                 onPress={()=>{
                     dispatch(navigationRedux(1))
                     navigation.navigate('List')
-                    //console.log(useSelector(state => state.list.navigation))
                 }}>
                     <Text style={styles.text}>Casa</Text>
                 </TouchableOpacity>
@@ -62,19 +61,21 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         justifyContent: "flex-start",
+        alignItems: "stretch",
+        maxHeight: "80%",
     },
     fila: {
         flex: 1,
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-evenly",
         alignItems: "center",
-        maxHeight: "30%",
+        maxHeight: "40%",
     },
     opcion:       {
         width: "30%",
-        height: "50%",
+        height: "60%",
         backgroundColor: "blue",
-        borderRadius: 10,
+        borderRadius: 5,
         justifyContent: "center",
         alignItems: "center"
     },

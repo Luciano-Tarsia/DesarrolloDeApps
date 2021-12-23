@@ -5,6 +5,7 @@ import {Ionicons} from '@expo/vector-icons';
 import Navigator from "./Navigator";
 import React from "react";
 import { StyleSheet } from "react-native";
+import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const BottomTabs = createBottomTabNavigator();
@@ -17,6 +18,7 @@ const TabNavigator = () => {
                 headerShown: false,
                 tabBarShowLabel: false,
                 tabBarStyle: styles.tabBar,
+                tabBarHideOnKeyboard: true
             }}
         >
             <BottomTabs.Screen  
@@ -50,19 +52,17 @@ const TabNavigator = () => {
 
 const styles = StyleSheet.create({
     tabBar: {
-        shadowColor: '#7f5df0',
-        elevation: 20,
         position: "absolute",
-        bottom: 20,
-        left: 20,
-        right: 20,
-        borderRadius: 15,
-        height: 65,
+        bottom: "4%",
+        left: "8%",
+        right: "8%",
+        borderRadius: 5,
+        height: 60,
     },
     item: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
     },
 })
 
