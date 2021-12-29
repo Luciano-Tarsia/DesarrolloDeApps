@@ -1,16 +1,20 @@
 import { Image, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { connect, useDispatch, useSelector } from 'react-redux';
 
 import React from "react";
+import { ReduxThunk } from "../store/actions/action";
 
 const AuxiliarScreenOne = props => {
 
+    const dispatch = useDispatch()
+
     const [text, setText] = React.useState("Useless Text");
 
-    const uploadToFirebase = () => {
-        if (text.length < 3)
+    const handlerReduxThunk = (texto) => {
+        if (texto.length < 3)
             alert("La palabra ingresada tiene menos de 3 caracteres")
         else
-            alert("hola")
+            dispatch(ReduxThunk(texto))
     }
 
     return(
@@ -25,7 +29,7 @@ const AuxiliarScreenOne = props => {
                 />
             <Pressable 
                 onPress={() =>{
-                    uploadToFirebase()
+                    handlerReduxThunk(text)
                 }}
                 style={styles.boton}
             >
