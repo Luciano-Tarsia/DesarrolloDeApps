@@ -1,5 +1,3 @@
-import {NavigationContainer} from '@react-navigation/native';
-
 export const ADD_TO_LIST = "ADD_TO_LIST"
 export const ELIMINATE_FROM_LIST = "ELIMINATE_FROM_LIST"
 export const NAVIGATION = "NAVIGATION"

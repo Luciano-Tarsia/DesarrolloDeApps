@@ -1,1 +1,1 @@
-export const URL_API = "https://desarrollodeaplicaciones-a30a9-default-rtdb.firebaseio.com/"
+export const URL_API = "https://reactnative-f4273-default-rtdb.firebaseio.com/"

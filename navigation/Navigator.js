@@ -1,7 +1,9 @@
 import AddScreen from '../pages/AddScreen';
 import AuxiliarScreenOne from '../pages/AuxiliarScreenOne';
+import CreateUserScreen from '../pages/CreateUserScreen';
 import HomeScreen from '../pages/HomeScreen';
 import ListScreen from '../pages/ListScreen';
+import LoginScreen from '../pages/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -25,6 +27,14 @@ const Navigator = () => {
 
     return (
         <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen
+                name="Login"   
+                component={LoginScreen}
+            />
+            <Stack.Screen
+                name="CreateUser"
+                component={CreateUserScreen}
+            />
             <Stack.Screen
                 name="Home"   
                 component={HomeScreen}

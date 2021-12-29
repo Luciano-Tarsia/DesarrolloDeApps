@@ -5,11 +5,8 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import {Ionicons} from '@expo/vector-icons';
 import { addToList } from "../store/actions/action";
 
-const BUTTON_SIZE = 30
-const BORDER_WIDTH = 1
-
 const AddScreen = props => {
-    const [text, setText] = React.useState("Useless Text");
+    const [text, setText] = React.useState("");
 
     const [agregado, setAgregado] = React.useState(false);
 
@@ -17,8 +14,12 @@ const AddScreen = props => {
     const categoria = useSelector(state => state.list.navigation)
 
     const addItem = () => {
-        let newElement = {id: Math.random().toString(), value: text, cat: categoria}
-        dispatch(addToList(newElement))
+        if (text.length < 1){
+            alert("Ingrese una palabra")
+        }else{
+            dispatch(addToList({id: Math.random().toString(), value: text, cat: categoria}))
+            setAgregado(true)
+        }
     }
 
     return(
@@ -32,7 +33,6 @@ const AddScreen = props => {
                 <Pressable 
                         onPress={() =>{
                             addItem()
-                            setAgregado(true)
                         }}
                         style={styles.boton}
                     >

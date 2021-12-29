@@ -1,12 +1,36 @@
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 import React from "react";
 
 const AuxiliarScreenOne = props => {
+
+    const [text, setText] = React.useState("Useless Text");
+
+    const uploadToFirebase = () => {
+        if (text.length < 3)
+            alert("La palabra ingresada tiene menos de 3 caracteres")
+        else
+            alert("hola")
+    }
+
     return(
         <View style={styles.container}>
             <Text   style={styles.text}>Aplicación creada por Luciano Tarsia en Diciembre de 2021.</Text>
             <Image  style={styles.image} source={require('../assets/images/Logo.png')} />
+
+            <TextInput
+                    placeholder = "Item de la lista"
+                    onChangeText = {setText} 
+                    style = {styles.input}
+                />
+            <Pressable 
+                onPress={() =>{
+                    uploadToFirebase()
+                }}
+                style={styles.boton}
+            >
+                <Text style={{color:"white", fontFamily: "openSans",}}>AGREGAR</Text>
+            </Pressable>
         </View>
     )
 }
@@ -40,6 +64,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
+    },
+    input: {
+        height: 40,
+        margin: 11,
+        marginTop: 10,
+        borderWidth: 1,
+        padding: 10,
+    },
+    boton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        borderRadius: 5,
+        elevation: 3,
+        backgroundColor: "blue",
+        marginRight: 10,
+        marginLeft: 10,
     },
 })
 
