@@ -1,4 +1,4 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import DeleteModal from '../components/Modal';
@@ -38,9 +38,13 @@ const ListScreen = props => {
                 numColumns={2}
                 renderItem={(data) => (
                     <View style={styles.item}>
+                        <Image 
+                            style = {styles.image}
+                            source = {{uri: data.item.imagen}}
+                        />
                         <Text
                             style={
-                                {color: "blue", marginTop:10, marginLeft:10, marginRight:10, textAlign: "center"}
+                                {color: "blue", marginLeft:10, marginRight:10, textAlign: "center"}
                             }
                         >
                             {data.item.value}
@@ -68,6 +72,8 @@ const styles = StyleSheet.create({
         backgroundColor: "lightblue",
         borderRadius: 5,
         elevation: 5,
+        width: 150,
+        height: 200
     },
     boton: {
         alignItems: 'center',
@@ -87,8 +93,14 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         elevation: 3,
         backgroundColor: "blue",
-        margin: 10,
+        marginBottom: 10,
     },
+    image: {
+        width: '80%',
+        height: '50%',
+        borderRadius: 5,
+        marginTop:10
+    }
 })
 
 export default ListScreen

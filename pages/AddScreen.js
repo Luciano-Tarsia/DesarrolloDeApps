@@ -1,12 +1,14 @@
-import { KeyboardAvoidingView, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, KeyboardAvoidingView, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { connect, useDispatch, useSelector } from 'react-redux';
 
+import ImageSelector from "../components/ImageSelector";
 import {Ionicons} from '@expo/vector-icons';
 import { addToList } from "../store/actions/action";
 
 const AddScreen = props => {
     const [text, setText] = React.useState("");
+    const [image, setImage] = useState()
 
     const [agregado, setAgregado] = React.useState(false);
 
@@ -16,8 +18,10 @@ const AddScreen = props => {
     const addItem = () => {
         if (text.length < 1){
             alert("Ingrese una palabra")
+        }else if(!image){
+            alert("Ingrese una imagen")
         }else{
-            dispatch(addToList({id: Math.random().toString(), value: text, cat: categoria}))
+            dispatch(addToList({id: Math.random().toString(), value: text, cat: categoria, imagen: image}))
             setAgregado(true)
         }
     }
@@ -26,10 +30,13 @@ const AddScreen = props => {
         <KeyboardAvoidingView style={{flex:1}} behavior="height" keyboardVerticalOffset={30}>
             <View style={styles.container}>
                 <TextInput
-                    placeholder = "Item de la lista"
+                    placeholder = "Título de la imagen"
                     onChangeText = {setText} 
                     style = {styles.input}
                 />
+
+                <ImageSelector onImage={image => console.log(image)} setImage={setImage} />
+
                 <Pressable 
                         onPress={() =>{
                             addItem()
